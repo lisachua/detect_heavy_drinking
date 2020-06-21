@@ -1,8 +1,6 @@
 # Detect Heavy Drinking Episodes Using Smartphone Accelerometer Data
 
-## Solution
-
-### Abstract/ Summary:
+## Abstract/ Summary:
 Just-in-time adaptive interventions (JITAIs) are a promising area of research in health domains, and have been used to detect heavy drinking episodes before their onset. This projects aims to improve on the study "Learning to Detect Heavy Drinking Episodes Using Smartphone Accelerometer Data" [Killian et al., 2019]. The study provides smartphone accelerometer data from 13 participants before and after a bar crawl and their blood alcohol content via transdermal alcohol concentration (TAC). Given a 10 second window of non-zero accelerometer data, I predict whether the TAC is above 0.08 (intoxicated). 
 
 During preprocessing, I resampled the accelerometer data in order to have a reading for every millisecond between a subject's minimum to maximum timestamp. I engineered features at the 10 second window level using a two-tiered windowing approach similar to the technique used in the original study. My final dataset for modeling had 135 features and 72,521 rows. The class balance was around 36% intoxicated and 64% not intoxicated. <b> My best classifier (a stacked ensemble) detected "intoxication" with accuracy 0.86 and F1 score 0.81, surpassing the original study's best model performance. </b>
