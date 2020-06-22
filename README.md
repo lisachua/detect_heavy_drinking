@@ -43,6 +43,7 @@ With every millisecond accounted for after preprocessing, statistics taken on a 
 ![]('class_balance_(after_preprocessing_+_merge).png')
 
 <b>Feature Importance:</b> I ran feature importance on my baseline random forest model to see which engineered features were most predictive, and found the "zero crossing" features to be important as expected. I decided to retain all 135 features as training time was still manageable.
+
 <img src="plots/feat_imp.png" width=200 height=200>
 
 ### V. Model Performance:
