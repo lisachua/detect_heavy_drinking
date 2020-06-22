@@ -81,7 +81,7 @@ ipython kernel install --user --name=[env_name]
 
 ### Run
 1. Download raw data [here](https://archive.ics.uci.edu/ml/datasets/Bar+Crawl%3A+Detecting+Heavy+Drinking) and unzip. The folder should be named "data\" and be located in the root directory.
-2. Run all cells in <b>Preprocess_FeatEng_Baseline.ipynb</b> for preprocessing, feature engineering and baseline model. Train and test csv files will be saved in "h2o_data\".
+2. Run all cells in <b>Preprocess_FeatEng_Baseline.ipynb</b> for preprocessing, feature engineering and baseline model. Train and test csv files will be saved in "h2o_data\". Note that preprocessed intermediate files were not uploaded to Github due to storage limits. The functions included in this notebook should take around 30 minutes to run and create those files.
 3. Run <b>H2O_AutoML.ipynb</b> to get model leaderboard and compute metrics.
 
 <b>*Note:</b> Make sure to specify correct kernel when opening a jupyter notebook.
