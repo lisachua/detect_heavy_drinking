@@ -56,7 +56,8 @@ XGBoost (H2O AutoML) | 0.8549 | 0.8066
 
 Best model performance of original study: Accuracy 0.7748, F1 score 0.6815.
 
-My baseline random forest model already had decent metrics, so I decided to use H2O's AutoML to find the top 10 models and hyperparameters. H2O ranks the classifiers based on AUC. The best classifier was a stacked ensemble of tree-based models, with an accuracy of 0.86 and F1 score of 0.81.
+Since my baseline random forest model had decent metrics, I decided to use H2O's AutoML to find the top 10 models and hyperparameters. H2O ranks the classifiers based on AUC. The best classifier was a stacked ensemble of tree-based models, with an accuracy of 0.86 and F1 score of 0.81.
+Model selection and hyperparameter tuning did not drastically improve metrics, emphasizing the importance of data preprocessing and feature engineering instead.
 
 
 ## How to run:
