@@ -18,7 +18,7 @@ As seen in the sample plot below for participant CC6740, the accelerometer data 
 
 While the study states that the accelerometer data was collected at 40Hz, the timestamps on the data show inconsistent time intervals between each reading. For example, data collected for participant CC6740 had intervals ranging from 0 milliseconds to 2,157,503 milliseconds. The inconsistent sampling rate could introduce bias when taking descriptive statistics on a 10-minute window. This problem was addressed in data preprocessing.
 
-![](plots/acc_time_intervals.png | width=100)
+<img src="plots/acc_time_intervals.png" width=100 height=100>
 
 <b> TAC data:</b> clean_tac/*.csv - 13 files with 715 rows total, 2 columns (timestamp unix seconds, TAC_Reading )
 
