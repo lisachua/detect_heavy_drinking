@@ -62,6 +62,9 @@ def preprocess_acc(path, new_path):
 
     This function returns None.
     """
+    # Create folder for new_path if does not exist.
+    if not os.path.exists(new_path):
+        os.makedirs(new_path)
     # Load file.
     df = pd.read_csv(path + "all_accelerometer_data_pids_13.csv")
     # Drop if missing timestamp.
@@ -83,24 +86,22 @@ def preprocess_acc(path, new_path):
 	    # Print new df shape.
 	    print(f"New shape: {new_df.shape}")
 	    # Export preproccessed data as a pickle file.
-	    new_df.to_pickle(new_path + "preprocessed_acc/" +
-	    				 current_pid + "_preprocessed_acc.pkl")
+	    new_df.to_pickle(new_path + current_pid + 
+	    				"_preprocessed_acc.pkl")
     print("Preprocessing complete and files exported.")
     return None
 
 
-def preprocess_tac(path, new_path):
+def preprocess_tac(path):
     """
     Given a path to the "clean_tac" folder,
-    append all tac files in directory create a pid variable.
+    append all tac files in directory and create a pid variable.
     
     Convert "TAC_Reading" into binary "intoxicated" variable:
     intoxicated = 1 if TAC_Reading > 0.08,
     intoxicated = 0 if TAC_Reading <= 0.08.
 
-    Export dataframe as a pickle file to new_path.
-
-    This function returns None.
+	Returns concatenated dataframe with all pids.
     """
     appended_data = []
     directory = os.fsencode(path)
@@ -109,13 +110,8 @@ def preprocess_tac(path, new_path):
         df = pd.read_csv(path + filename)
         df['pid'] = filename.split("_")[0]
         appended_data.append(df)
-    df = pd.concat(appended_data).sort_values(['timestamp'], ascending=True).reset_index()
+    df = pd.concat(appended_data).sort_values(['timestamp'], ascending=True).reset_index(drop=True)
     # Create binary flag.
     df.loc[df.TAC_Reading > 0.08, "intoxicated"] = 1
     df.loc[df.TAC_Reading <= 0.08, "intoxicated"] = 0
-    # Drop columns.
-    df = df.drop(columns=['TAC_Reading', 'index'], axis=1)
-    # Export as pickle file.
-    df.to_pickle(new_path + "preprocessed_tac.pkl")
-    print("Preprocessed TAC file exported.")
-    return None
+    return df
