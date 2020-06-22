@@ -40,6 +40,7 @@ With every millisecond accounted for after preprocessing, statistics taken on a 
 <b>Windowing:</b> During feature engineering, I performed <b>two-tiered windowing</b> similar to the approach used in the original study. For every 10-second segment, I further segmented the window down to 1-second segments. I computed metrics for each 1-second segment, then computed the mean, median, standard deviation, max and min of the metric over the 10 1-second segments to characterize how it changes over the 10-second window. I also took the mean of the first and last three seconds of the 10-second window. I additionally performed single-tier windowing, computing percentiles to capture the distribution over the 10-second window. After windowing and feature engineering, I had 72,521 rows and 135 features. 
 
 <b>Reconciling target data with features: </b> Since the TAC data was sampled at a much lower rate than the accelerometer data (about once every 30 minutes), I merged the TAC data onto the accelerometer data by taking the most recent "intoxicated" value where the TAC timestamp is less than or equal to the accelerometer timestamp. Class balance improved, with the share of "intoxicated" samples increasing to 36%.
+
 ![](plots/class_balance_(after_preprocessing_+_merge).png)
 
 <b>Feature Importance:</b> I ran feature importance on my baseline random forest model to see which engineered features were most predictive, and found the "zero crossing" features to be important as expected. I decided to retain all 135 features as training time was still manageable.
@@ -80,6 +81,7 @@ ipython kernel install --user --name=[env_name]
 
 ### Run
 1. Download raw data [here](https://archive.ics.uci.edu/ml/datasets/Bar+Crawl%3A+Detecting+Heavy+Drinking) and unzip. The folder should be named "data\" and be located in the root directory.
-2. Run all cells in <b>Preprocess_FeatEng_Baseline.ipynb<\b> for preprocessing, feature engineering and baseline model. Train and test csv files will be saved in "h2o_data\".
-3. Run <b>H2O_AutoML.ipynb<\b> to get model leaderboard and compute metrics.
-<b>*Note:<\b> Make sure to specify correct kernel when opening a jupyter notebook.
+2. Run all cells in <b>Preprocess_FeatEng_Baseline.ipynb</b> for preprocessing, feature engineering and baseline model. Train and test csv files will be saved in "h2o_data\".
+3. Run <b>H2O_AutoML.ipynb</b> to get model leaderboard and compute metrics.
+
+<b>*Note:</b> Make sure to specify correct kernel when opening a jupyter notebook.
